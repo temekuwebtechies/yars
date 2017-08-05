@@ -1,7 +1,20 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+
+import { 
+  Container, 
+  Row, 
+  Col, 
+  Jumbotron, 
+  Button, 
+  Collapse, 
+  Navbar, 
+  NavbarToggler, 
+  NavbarBrand, 
+  Nav, 
+  NavItem, 
+  NavLink
+} from 'reactstrap';
 
 import Account from './components/Account.js';
 import Home from './components/Home.js';
@@ -9,18 +22,17 @@ import Login from './components/Login.js';
 import Recover from './components/Recover.js';
 import SignUp from './components/SignUp.js';
 
-const Nav = () => (
-    <ul>
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/signup">Sign Up</Link></li>
-      <li><Link to="/login">Login</Link></li>
-      <li><Link to="/recover">Recover</Link></li>
-      <li><Link to="/account">My Account</Link></li>
-    </ul>
+const Navigation = () => (
+  <ul>
+    <li><Link to="/">Home</Link></li>
+    <li><Link to="/signup">Sign Up</Link></li>
+    <li><Link to="/login">Login</Link></li>
+    <li><Link to="/recover">Recover</Link></li>
+    <li><Link to="/account">My Account</Link></li>
+  </ul>
 )
 
 class App extends Component {
-  
   constructor(props) {
     super(props);
     
@@ -32,7 +44,6 @@ class App extends Component {
         text: ""
       }
     }
-    
     
     this.showMessage = this.showMessage.bind(this);
     this.login = this.login.bind(this);
@@ -74,7 +85,6 @@ class App extends Component {
   }
   
   render() {
-    
     const { name, message } = this.state;
     const messageStyles = {
       color: message.type === 'error' ? 'red' : 'green'
@@ -82,9 +92,10 @@ class App extends Component {
     
     return (
       <main>
+      <Container>
         <Router>
         <div>
-          <Nav />
+          <Navigation />
           <h1>Welcome {name}</h1>
           <p onClick={() => this.showMessage()} hidden={message.type === "hidden"} style={messageStyles}>{message.text}</p>
           <Switch>
@@ -98,6 +109,7 @@ class App extends Component {
           </Switch>
         </div>
         </Router>
+      </Container>
       </main>
     );
   }
