@@ -1,0 +1,28 @@
+{
+  "name": "temeku-yars",
+  "version": "0.0.1",
+  "description": "Yet Another React Starter Project for TWT",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-scripts": "1.0.10"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/temekuwebtechies/yars.git"
+  },
+  "author": "Temecula Web Techies",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/temekuwebtechies/yars/issues"
+  },
+  "homepage": "https://github.com/temekuwebtechies/yars#readme"
+}
