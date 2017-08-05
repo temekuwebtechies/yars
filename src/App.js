@@ -1,36 +1,46 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { 
-  Container, 
-  Row, 
-  Col, 
-  Jumbotron, 
-  Button, 
-  Collapse, 
-  Navbar, 
-  NavbarToggler, 
-  NavbarBrand, 
-  Nav, 
-  NavItem, 
-  NavLink
+  Container
 } from 'reactstrap';
 
-import Account from './components/Account.js';
-import Home from './components/Home.js';
-import Login from './components/Login.js';
-import Recover from './components/Recover.js';
-import SignUp from './components/SignUp.js';
+/* Screens */
+import Account from './screens/Account.js';
+import Home from './screens/Home.js';
+import Login from './screens/Login.js';
+import Recover from './screens/Recover.js';
+import SignUp from './screens/SignUp.js';
 
-const Navigation = () => (
-  <ul>
-    <li><Link to="/">Home</Link></li>
-    <li><Link to="/signup">Sign Up</Link></li>
-    <li><Link to="/login">Login</Link></li>
-    <li><Link to="/recover">Recover</Link></li>
-    <li><Link to="/account">My Account</Link></li>
-  </ul>
-)
+/* Components */
+import NavBar from './components/NavBar.js';
+
+const ROUTES = [
+  {
+    path: "/",
+    name: "Home",
+    component: Home
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: Login
+  },
+  {
+    path: "/signup",
+    name: "Sign Up",
+    component: SignUp
+  },
+  {
+    path: "/recover",
+    name: "Recover",
+    component: SignUp
+  },
+  {
+    path: "/account",
+    name: "My Account",
+    component: Account
+  }
+]
 
 class App extends Component {
   constructor(props) {
@@ -89,13 +99,13 @@ class App extends Component {
     const messageStyles = {
       color: message.type === 'error' ? 'red' : 'green'
     }
-    
+
     return (
       <main>
       <Container>
+        <NavBar items={ROUTES} />
         <Router>
         <div>
-          <Navigation />
           <h1>Welcome {name}</h1>
           <p onClick={() => this.showMessage()} hidden={message.type === "hidden"} style={messageStyles}>{message.text}</p>
           <Switch>
